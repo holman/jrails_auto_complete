@@ -35,7 +35,7 @@ module JrailsAutoCompleteMacroHelper
 
   def auto_complete_result(entries, field, phrase = nil)
     return unless entries
-    items = entries.map { |entry| content_tag('li', phrase ? highlight(entry[field], phrase) : h(entry[field])) }
+    items = entries.map { |entry| content_tag('li', phrase ? highlight(entry.send(field), phrase) : h(entry.send(field))) }
     content_tag('ul', items.uniq)
   end
 
